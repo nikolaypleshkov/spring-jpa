@@ -56,6 +56,13 @@ public class Student {
         this.age = age;
     }
 
+    public Student(String f_name, String l_name, String email, int age) {
+        this.f_name = f_name;
+        this.l_name = l_name;
+        this.email = email;
+        this.age = age;
+    }
+
     public Student() {
 
     }
@@ -100,5 +107,14 @@ public class Student {
         this.age = age;
     }
 
-
+    @Override
+    public String toString() {
+        return "Student{" +
+                "id=" + id +
+                ", f_name='" + f_name + '\'' +
+                ", l_name='" + l_name + '\'' +
+                ", email='" + email + '\'' +
+                ", age=" + age +
+                '}';
+    }
 }
