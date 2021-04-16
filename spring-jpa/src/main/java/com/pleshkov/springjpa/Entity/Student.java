@@ -1,8 +1,8 @@
 package com.pleshkov.springjpa.Entity;
 
-import org.springframework.beans.factory.annotation.Value;
-
 import javax.persistence.*;
+import java.time.LocalDate;
+import java.time.Period;
 
 @Entity(name = "Student")
 @Table(
@@ -46,9 +46,11 @@ public class Student {
     @Column(
             name = "age",
             nullable = false)
-    private int age;
+    private LocalDate age;
 
-    public Student(Long id, String f_name, String l_name, String email, int age) {
+
+
+    public Student(Long id, String f_name, String l_name, String email, LocalDate age) {
         this.id = id;
         this.f_name = f_name;
         this.l_name = l_name;
@@ -56,7 +58,7 @@ public class Student {
         this.age = age;
     }
 
-    public Student(String f_name, String l_name, String email, int age) {
+    public Student(String f_name, String l_name, String email, LocalDate age) {
         this.f_name = f_name;
         this.l_name = l_name;
         this.email = email;
@@ -100,10 +102,10 @@ public class Student {
     }
 
     public int getAge() {
-        return age;
+        return Period.between(this.age, LocalDate.now()).getYears();
     }
 
-    public void setAge(int age) {
+    public void setAge(LocalDate age) {
         this.age = age;
     }
 
