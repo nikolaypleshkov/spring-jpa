@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
+@org.springframework.stereotype.Service
 public class Service {
     private StudentDAO dao;
 
