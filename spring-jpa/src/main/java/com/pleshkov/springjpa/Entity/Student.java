@@ -5,6 +5,12 @@ import org.springframework.beans.factory.annotation.Value;
 import javax.persistence.*;
 
 @Entity(name = "Student")
+@Table(
+        name = "student",
+        uniqueConstraints = {
+                @UniqueConstraint(name = "unique_email ",
+                columnNames = "email")
+        })
 public class Student {
 
     @Id
@@ -30,12 +36,13 @@ public class Student {
             nullable = false,
             columnDefinition = "TEXT")
     private String l_name;
+
     @Column(
             name = "email",
             nullable = false,
-            columnDefinition = "TEXT",
-            unique = true)
+            columnDefinition = "TEXT")
     private String email;
+
     @Column(
             name = "age",
             nullable = false)
@@ -50,7 +57,7 @@ public class Student {
     }
 
     public Student() {
-        
+
     }
 
     public Long getId() {
