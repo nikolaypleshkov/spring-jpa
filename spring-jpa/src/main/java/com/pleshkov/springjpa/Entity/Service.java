@@ -17,7 +17,7 @@ public class Service {
         return  dao.findAll();
     }
 
-    public void regStudent(Student student){
+    public void Post(Student student){
         Optional<Student> email = dao.findStudentByEmail(student.getEmail());
 
         if(email.isPresent()){
