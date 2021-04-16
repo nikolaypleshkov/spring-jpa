@@ -6,6 +6,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import java.time.LocalDate;
+import java.time.Month;
 import java.util.List;
 
 @Configuration
@@ -17,7 +19,7 @@ public class Config {
                     "Nikolay",
                     "Pleshkov",
                     "stu2001321014@uni-plovdiv.bg",
-                    19
+                    LocalDate.of(2001, Month.DECEMBER,27)
             );
 
             dao.saveAll(List.of(st1));
