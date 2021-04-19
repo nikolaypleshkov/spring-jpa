@@ -5,6 +5,7 @@ import com.pleshkov.springjpa.Entity.Student;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.time.LocalDate;
 import java.time.Month;
@@ -12,6 +13,13 @@ import java.util.List;
 
 @Configuration
 public class Config {
+
+    @Bean
+    public BCryptPasswordEncoder bCryptPasswordEncoder(){
+        return new BCryptPasswordEncoder();
+    }
+
+    /*
     @Bean
     CommandLineRunner commandLineRunner (StudentDAO dao){
         return args ->{
@@ -25,4 +33,6 @@ public class Config {
             dao.saveAll(List.of(st1));
         };
     }
+
+     */
 }
