@@ -1,9 +1,20 @@
 package com.pleshkov.springjpa.Entity;
 
+import lombok.*;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.Collection;
+import java.util.Collections;
 
+@Setter
+@Getter
+@Builder
+@AllArgsConstructor
 @Entity(name = "Student")
 @Table(
         name = "student",
@@ -11,7 +22,7 @@ import java.time.Period;
                 @UniqueConstraint(name = "unique_email ",
                 columnNames = "email")
         })
-public class Student {
+public class Student implements UserDetails {
 
     @Id
     @SequenceGenerator(
@@ -48,6 +59,16 @@ public class Student {
             nullable = false)
     private LocalDate age;
 
+    private String password;
+
+    private UserRole userRole = UserRole.STUDENT;
+
+    @Builder.Default
+    private Boolean locked = false;
+
+    @Builder.Default
+    private Boolean enable = false;
+
 
 
     public Student(Long id, String f_name, String l_name, String email, LocalDate age) {
@@ -67,6 +88,41 @@ public class Student {
 
     public Student() {
 
+    }
+
+    public Collection <? extends GrantedAuthority> getAuthorities(){
+        final SimpleGrantedAuthority simpleGrantedAuthority = new SimpleGrantedAuthority(userRole.name());
+        return Collections.singletonList(simpleGrantedAuthority);
+    }
+
+    @Override
+    public String getPassword() {
+        return password;
+    }
+
+    @Override
+    public String getUsername() {
+        return email;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return !locked;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
     }
 
     public Long getId() {
