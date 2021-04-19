@@ -1,6 +1,7 @@
-package com.pleshkov.springjpa.Entity;
+package com.pleshkov.springjpa.Student;
 
 import com.pleshkov.springjpa.DAO.StudentDAO;
+import com.pleshkov.springjpa.Entity.Student;
 
 import java.util.List;
 import java.util.Objects;
