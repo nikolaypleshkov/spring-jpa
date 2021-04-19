@@ -11,6 +11,7 @@ import java.time.Period;
 import java.util.Collection;
 import java.util.Collections;
 
+@EqualsAndHashCode
 @Setter
 @Getter
 @Builder
@@ -90,6 +91,8 @@ public class Student implements UserDetails {
 
     }
 
+    
+    @Override
     public Collection <? extends GrantedAuthority> getAuthorities(){
         final SimpleGrantedAuthority simpleGrantedAuthority = new SimpleGrantedAuthority(userRole.name());
         return Collections.singletonList(simpleGrantedAuthority);
