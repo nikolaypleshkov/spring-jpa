@@ -1,6 +1,6 @@
 package com.pleshkov.springjpa.Controller;
 
-import com.pleshkov.springjpa.Entity.Service;
+import com.pleshkov.springjpa.Student.Service;
 import com.pleshkov.springjpa.Entity.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
