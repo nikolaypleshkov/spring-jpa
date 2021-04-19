@@ -23,12 +23,12 @@ public class Controller {
 
     @GetMapping("/sign-in")
     String signIn(){
-        return "sign-in";
+        return "signIn";
     }
 
     @GetMapping("/sign-up")
     String signUpPage(Student student){
-        return "sign-up";
+        return "signUp";
     }
 
     @PostMapping("/sign-up")
